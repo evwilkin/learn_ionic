@@ -18,9 +18,51 @@ angular.module('starter', ['ionic'])
   });
 })
 
-.controller('ListController', ['$scope', '$http', function($scope, $http) {
+.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider
+    .state('tabs', {
+      url: '/tab',
+      abstract: true,
+      templateUrl: 'templates/tabs.html'
+    })
+
+    .state('tabs.home', {
+      url: '/home',
+      views: {
+        'home-tab' : {
+          templateUrl: 'templates/home.html'
+        }
+      }
+    })
+
+    .state('tabs.list', {
+      url: '/list',
+      views: {
+        'list-tab' : {
+          templateUrl: 'templates/list.html',
+          controller: 'ListController'
+        }
+      }
+    })
+
+    .state('tabs.detail', {
+      url: '/list/:aId',
+      views: {
+        'list-tab' : {
+          templateUrl: 'templates/detail.html',
+          controller: 'ListController'
+        }
+      }
+    })
+  $urlRouterProvider.otherwise('/tab/home');
+})
+
+.controller('ListController', ['$scope', '$http', '$state', function($scope, $http, $state) {
   $http.get('js/data.json').success(function(data) {
     $scope.artists = data;
+    $scope.whichartist = $state.params.aId;
+    $scope.data = { showDelete: false,
+      showReorder: false };
 
     $scope.onItemDelete = function(item) {
       $scope.artists.splice($scope.artists.indexOf(item), 1);
