@@ -24,18 +24,31 @@
     <script src="js/services.js"></script>
   </head>
   <body ng-app="starter">
-    <!--
-      The nav bar that will be updated as we navigate between views.
-    -->
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-    </ion-nav-bar>
-    <!--
-      The views will be rendered in the <ion-nav-view> directive below
-      Templates are in the /templates folder (but you could also
-      have templates inline in this html file if you'd like).
-    -->
-    <ion-nav-view></ion-nav-view>
+    <ion-pane>
+      <ion-header-bar class="bar-dark">
+        <h2 class="title">Artist List</h2>
+      </ion-header-bar>
+      <div class="bar bar-subheader item-input-inset bar-light">
+        <label class="item-input-wrapper">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="Search">
+        </label>
+      </div>
+      <ion-content class="has-subheader">
+        <ion-list>
+          <ion-item class="item-thumbnail-left item-text-wrap">
+            <img src="http://placehold.it/100x100" alt="photo">
+            <h2>Name</h2>
+            <h3>Reknown</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-pane>
   </body>
 </html>
